@@ -5,7 +5,7 @@ HOMEPAGE = "https://github.com/newtoncircus/silverline-sensor-hub"
 
 PR = "r2"
 
-DEPENDS = "lua libopenzwave lua-stdlib lua-sqlite3 lua-posix \
+DEPENDS = "bluez5 lua libopenzwave lua-stdlib lua-sqlite3 lua-posix \
         lua-json lua-etlua lua-socket lua-logging \
         lua-filesystem lua-lpeg lua-rings lua-wsapi \
         lua-xavante lua-copas lua-coxpcall lua-cosmo lua-orbit lua-luatz lua-md5 \
@@ -46,7 +46,7 @@ EXTRA_OEMAKE = "'PREFIX=${D}${prefix}' \
 "
 
 
-RDEPENDS_${PN} = "lua sqlite3 libopenzwave lua-stdlib \
+RDEPENDS_${PN} = "bluez5 lua sqlite3 libopenzwave lua-stdlib \
 	lua-sqlite3 lua-posix lua-coxpcall \
         lua-json lua-etlua lua-socket lua-logging \
         lua-filesystem lua-lpeg lua-rings lua-wsapi \
