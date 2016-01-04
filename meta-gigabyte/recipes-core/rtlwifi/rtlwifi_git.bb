@@ -6,7 +6,7 @@ This code will build on any kernel 3.0 and newer. It includes the following driv
 rtl8192ce, rtl8192se, rtl8192de, rtl8188ee, rtl8192ee, rtl8723ae, rtl8723be, and rtl8821ae."
 
 
-LICENSE = "Propiretary"
+LICENSE = "Proprietary"
 
 LIC_FILES_CHKSUM = "file://firmware/rtlwifi/Realtek-Firmware-License.txt;md5=9590c633f1c19a55a2b128dfb1098664"
 HOMEPAGE = "https://github.com/lwfinger/rtlwifi_new"
@@ -51,9 +51,8 @@ do_install () {
 	FIRMWAREDIR="${D}/lib/firmware" \
 	MODDESTDIR="${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/net/wireless/rtlwifi"  \
         install
-
-
 }
+
 
 
 FILES_${PN} = "/lib/firmware/rtlwifi/*"
