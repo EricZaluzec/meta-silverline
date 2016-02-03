@@ -11,7 +11,7 @@ DEPENDS = "bluez4 lua libopenzwave lua-stdlib lua-sqlite3 lua-posix \
         lua-xavante lua-copas lua-coxpcall lua-cosmo lua-orbit lua-luatz lua-md5 \
 "
 
-SRC_URI = "git://git@github.com/newtoncircus/silverline-sensor-hub.git;branch=valleyisland-64;protocol=ssh;tag=v${PV} \
+SRC_URI = "git://git@github.com/newtoncircus/silverline-sensor-hub.git;branch=test-1.2;protocol=ssh;tag=v${PV} \
            file://sensorhub.pc \
 "
 
