@@ -5,7 +5,7 @@ HOMEPAGE = "https://github.com/newtoncircus/silverline-sensor-hub"
 
 PR = "r5"
 
-DEPENDS = "lighttpd bluez4 lua libopenzwave lua-stdlib lua-sqlite3 lua-posix \
+DEPENDS = "redis lighttpd bluez4 lua libopenzwave lua-stdlib lua-sqlite3 lua-posix \
         lua-json lua-etlua lua-socket lua-logging \
         lua-filesystem lua-lpeg lua-rings lua-wsapi \
         lua-xavante lua-copas lua-coxpcall lua-cosmo lua-orbit lua-luatz lua-md5 \
@@ -92,17 +92,18 @@ INITSCRIPT_PARAMS_${PN}-zwave = "defaults"
 
 
 FILES_${PN} = " ${libdir}${luadir}/*.so  \
-/opt/sensorhub/devices/*  \
-/opt/sensorhub/static/*	  \
-/opt/sensorhub/tools/*    \
-/opt/sensorhub/views/*    \
-/opt/sensorhub/lib/*	  \
-/opt/sensorhub/sql/*       \
-/opt/sensorhub/controllers/*   \
-/opt/sensorhub/bin/* 	\
-/opt/sensorhub/models/* \
-${sysconfdir}/init.d/*  \
-/var/lib/sensorhub/*	\
+/opt/sensorhub/devices/*  	\
+/opt/sensorhub/static/*	  	\
+/opt/sensorhub/tools/*    	\
+/opt/sensorhub/views/*    	\
+/opt/sensorhub/lib/*	  	\
+/opt/sensorhub/sql/*       	\
+/opt/sensorhub/controllers/*    \
+/opt/sensorhub/bin/* 		\
+/opt/sensorhub/models/* 	\
+/opt/sensorhub/cgi/* 		\
+${sysconfdir}/init.d/*  	\
+/var/lib/sensorhub/*		\
 "
 
 
