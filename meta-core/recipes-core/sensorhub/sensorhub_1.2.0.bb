@@ -8,7 +8,8 @@ PR = "r5"
 DEPENDS = "redis lighttpd bluez4 lua libopenzwave lua-stdlib lua-sqlite3 lua-posix \
         lua-json lua-etlua lua-socket lua-logging \
         lua-filesystem lua-lpeg lua-rings lua-wsapi \
-        lua-xavante lua-copas lua-coxpcall lua-cosmo lua-orbit lua-luatz lua-md5 \
+        lua-xavante lua-copas lua-coxpcall lua-cosmo lua-luatz lua-md5 \
+	lua-redis lua-telescope 	\
 "
 
 SRC_URI = "git://git@github.com/newtoncircus/silverline-sensor-hub.git;branch=test-1.2;protocol=ssh;tag=v${PV} \
@@ -50,8 +51,8 @@ RDEPENDS_${PN} = "bluez4 lua sqlite3 libopenzwave lua-stdlib \
 	lua-sqlite3 lua-posix lua-coxpcall \
         lua-json lua-etlua lua-socket lua-logging \
         lua-filesystem lua-lpeg lua-rings lua-wsapi \
-        lua-xavante lua-copas lua-cosmo lua-orbit \
-	lua-luatz lua-md5 \
+        lua-xavante lua-copas lua-cosmo lua-redis \
+	lua-luatz lua-md5 lua-telescope \
 "
 
 do_install () {
@@ -61,10 +62,13 @@ do_install () {
   	'INSTALL_MACHINE=${MACHINE}'  \
         install
 
-    install -d ${D}${libdir}/pkgconfig
-    install -m 0644 ${WORKDIR}/sensorhub.pc ${D}${libdir}/pkgconfig/
+
     install -d ${D}/var/lib/sensorhub
     rm -f ${D}/opt/sensorhub/tools/support.lua
+
+
+    install -d ${D}${libdir}/pkgconfig
+    install -m 0644 ${WORKDIR}/sensorhub.pc ${D}${libdir}/pkgconfig/
 }
 
 
@@ -90,8 +94,9 @@ INITSCRIPT_PARAMS_${PN}-webserver = "defaults"
 INITSCRIPT_NAME_${PN}-zwave = "sensorhub-zwave"
 INITSCRIPT_PARAMS_${PN}-zwave = "defaults"
 
+PACKAGES =+ "${PN}-test"
 
-FILES_${PN} = " ${libdir}${luadir}/*.so  \
+FILES_${PN} = "${libdir}${luadir}/*.so  \
 /opt/sensorhub/devices/*  	\
 /opt/sensorhub/static/*	  	\
 /opt/sensorhub/tools/*    	\
@@ -105,19 +110,17 @@ FILES_${PN} = " ${libdir}${luadir}/*.so  \
 ${sysconfdir}/init.d/*  	\
 /var/lib/sensorhub/*		\
 "
+FILES_${PN}-dbg = "\
+	${libdir}${luadir}/.debug/*	\
+"
 
-
-FILES_${PN}-dbg = " \
-	${libdir}${luadir}/.debug/luagatt.so \
-	${libdir}${luadir}/.debug/luaozw.so \
-	${libdir}${luadir}/.debug/luahci.so \
-	${libdir}${luadir}/.debug/luageckocontroller.so \
-" 
+FILES_${PN}-test = " \
+	/opt/sensorhub/tests	\
+	/opt/sensorhub/tests/*	\
+"
 
 pkg_postinst_${PN} ()  {
 	/opt/sensorhub/tools/serverControl.lua stop
-	/opt/sensorhub/tools/dbManager.lua --backup
-	/opt/sensorhub/tools/dbManager.lua --build=event
 	/opt/sensorhub/tools/setTimezone.lua --default
 	/opt/sensorhub/tools/serverControl.lua start
 	/opt/sensorhub/tools/checkSystemFiles.lua --write

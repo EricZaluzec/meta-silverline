@@ -6,7 +6,7 @@ Version: 0.57
 Requires: lua sqlite3 lua-orbit libopenzwave lua-stdlib lua-sqlite3 lua-posix \
         lua-json lua-etlua lua-socket lua-logging \
         lua-filesystem lua-lpeg lua-rings lua-wsapi \
-        lua-xavante lua-copas lua-cosmo lua-orbit lua-luatz \
+        lua-xavante lua-copas lua-cosmo lua-redis lua-luatz \
 	lua-md5
 
 
