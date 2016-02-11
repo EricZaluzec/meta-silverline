@@ -35,8 +35,9 @@ IMAGE_INSTALL += "logrotate"
 IMAGE_INSTALL += "rsync"
 IMAGE_INSTALL += "avahi-daemon"
 IMAGE_INTSALL += "usb-modeswitch"
-# IMAGE_INSTALL += " connman"
-
+IMAGE_INSTALL += "redis"
+IMAGE_INSTALL += "lighttpd"
+IMAGE_INSTALL += "sudo"
 IMAGE_INSTALL += "sensorhub"
 
 

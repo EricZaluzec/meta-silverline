@@ -20,7 +20,12 @@ SRC_URI[md5sum] = "dc7f94ec6ff15c985d2d6ad0f1b35654"
 SRC_URI[sha256sum] = "13c2fb97961381f7d06d5b5cea55b743c163800896fd5c5e2356201d3619002d"
 
 
-inherit update-rc.d
+inherit update-rc.d useradd
+
+PACKAGES =+ "${PN}-test"
+
+USERADD_PACKAGES = "${PN}" 
+USERADD_PARAM_${PN} = "-d /home/sensorhub -r -s /bin/bash sensorhub;" 
 
 
 S = "${WORKDIR}/git"
@@ -66,6 +71,7 @@ do_install () {
     install -d ${D}/var/lib/sensorhub
     rm -f ${D}/opt/sensorhub/tools/support.lua
 
+    chmod +x ${D}/opt/sensorhub/cgi/runWebserver.lua
 
     install -d ${D}${libdir}/pkgconfig
     install -m 0644 ${WORKDIR}/sensorhub.pc ${D}${libdir}/pkgconfig/
@@ -94,7 +100,7 @@ INITSCRIPT_PARAMS_${PN}-webserver = "defaults"
 INITSCRIPT_NAME_${PN}-zwave = "sensorhub-zwave"
 INITSCRIPT_PARAMS_${PN}-zwave = "defaults"
 
-PACKAGES =+ "${PN}-test"
+
 
 FILES_${PN} = "${libdir}${luadir}/*.so  \
 /opt/sensorhub/devices/*  	\
