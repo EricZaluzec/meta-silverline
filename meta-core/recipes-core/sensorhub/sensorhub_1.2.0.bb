@@ -25,7 +25,7 @@ inherit update-rc.d useradd
 PACKAGES =+ "${PN}-test"
 
 USERADD_PACKAGES = "${PN}" 
-USERADD_PARAM_${PN} = "-d /home/sensorhub -r -s /bin/bash sensorhub;" 
+USERADD_PARAM_${PN} = "--home-dir /home/sensorhub --create-home --system --shell /bin/sh --user-group sensorhub" 
 
 
 S = "${WORKDIR}/git"
@@ -80,25 +80,22 @@ do_install () {
 
 # init scripts to auto start servers
 
-INITSCRIPT_PACKAGES = "${PN} ${PN}-bluetooth ${PN}-watchdog ${PN}-data ${PN}-webserver ${PN}-zwave"
+INITSCRIPT_PACKAGES = "${PN} ${PN}-bluetooth ${PN}-watchdog ${PN}-data ${PN}-zwave"
 
 INITSCRIPT_NAME_${PN} = "sensorhub-startup"
 INITSCRIPT_PARAMS_${PN} = "defaults 01"
 
 INITSCRIPT_NAME_${PN}-bluetooth = "sensorhub-bluetooth"
-INITSCRIPT_PARAMS_${PN}-bluetooth = "defaults"
+INITSCRIPT_PARAMS_${PN}-bluetooth = "defaults 88"
 
 INITSCRIPT_NAME_${PN}-watchdog = "sensorhub-watchdog"
-INITSCRIPT_PARAMS_${PN}-watchdog = "defaults"
+INITSCRIPT_PARAMS_${PN}-watchdog = "defaults 88"
 
 INITSCRIPT_NAME_${PN}-data = "sensorhub-data"
-INITSCRIPT_PARAMS_${PN}-data = "defaults"
-
-INITSCRIPT_NAME_${PN}-webserver = "sensorhub-webserver"
-INITSCRIPT_PARAMS_${PN}-webserver = "defaults"
+INITSCRIPT_PARAMS_${PN}-data = "defaults 88"
 
 INITSCRIPT_NAME_${PN}-zwave = "sensorhub-zwave"
-INITSCRIPT_PARAMS_${PN}-zwave = "defaults"
+INITSCRIPT_PARAMS_${PN}-zwave = "defaults 88"
 
 
 

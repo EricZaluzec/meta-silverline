@@ -5,10 +5,13 @@ DAEMON=/usr/sbin/lighttpd
 NAME=lighttpd
 DESC="Lighttpd Web Server"
 OPTS="-f /etc/lighttpd.conf"
+LOG_FOLDER=/var/log/lighttpd
 
 case "$1" in
   start)
 	echo -n "Starting $DESC: "
+	mkdir -p $LOG_FOLDER
+	chown http:http $LOG_FOLDER
 	start-stop-daemon --start -x "$DAEMON" -- $OPTS
 	echo "$NAME."
 	;;

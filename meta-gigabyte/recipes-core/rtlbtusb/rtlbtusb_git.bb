@@ -1,4 +1,3 @@
-
 DESCRIPTION = "In this document, we introduce how to support driver btusb with Realtek device support in Linux system."
 
 LICENSE = "Proprietary"
@@ -14,8 +13,6 @@ SRC_URI = "git://github.com/lwfinger/rtl8723au_bt.git;branch=kernel"
 
 SRC_URI[md5sum] = "4dac9eda2c750cd85e97385a7dc27e42"
 SRC_URI[sha256sum] = "017d8db361929a1e773ebeef22aa8cf7641017dbbe37c0b49933800a4a3453f1"
-
-
 
 inherit module
 
@@ -35,17 +32,6 @@ do_compile () {
 
 
 do_install () {
-#     mkdir -p ${D}/lib/firmware/rtl_bt
-
-#    oe_runmake \
-#	CC="${CC}" \ 
-#	PWD="${S}" \
-#	KVER="${KERNEL_VERSION}" \
-#	KDIR="${STAGING_KERNEL_DIR}" \
-#	FW_DIR="${D}/lib/firmware/rtl_bt/" \
-#	MDL_DIR="${D}/lib/modules/${KERNEL_VERSION}" \
-#	DRV_DIR="${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/bluetooth"  \
-#        install
 
     mkdir -p ${D}/lib/firmware/rtl_bt
     cp -r ${S}/*_fw.bin ${D}/lib/firmware/rtl_bt
@@ -54,8 +40,9 @@ do_install () {
     cp ${S}/btusb.ko ${D}/lib/modules/${KERNEL_VERSION}/kernel/drivers/bluetooth/rtlbtusb.ko
 
     mkdir -p ${D}${sysconfdir}/modprobe.d
-    echo "blacklist btusb" > ${D}${sysconfdir}/modprobe.d/prohibit_btusb.conf
-    echo "rtlbtusb" > ${D}${sysconfdir}/modprobe.d/rtlbtusb.conf
+    echo "# make sure that we use the rtlbtusb kernel module for the gigabyte" > ${D}${sysconfdir}/modprobe.d/rtlbtusb.conf
+    echo "blacklist btusb" >> ${D}${sysconfdir}/modprobe.d/rtlbtusb.conf
+    echo "install rtlbtusb" >> ${D}${sysconfdir}/modprobe.d/rtlbtusb.conf
 }
 
 
