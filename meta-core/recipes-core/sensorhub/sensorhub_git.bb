@@ -11,8 +11,9 @@ DEPENDS = "redis lighttpd bluez4 lua libopenzwave lua-stdlib lua-posix \
         lua-xavante lua-copas lua-coxpcall lua-cosmo lua-luatz lua-md5 \
 	lua-redis lua-telescope lua-openssl 	\
 "
+SRCREV = "${AUTOREV}"
 
-SRC_URI = "git://git@github.com/newtoncircus/silverline-sensor-hub.git;branch=test-1.2;protocol=ssh;tag=v${PV} \
+SRC_URI = "git://git@github.com/newtoncircus/silverline-sensor-hub.git;branch=test-1.2;protocol=ssh \
             file://sensorhub.pc \
 "
 
