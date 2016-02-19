@@ -39,8 +39,8 @@ IMAGE_INSTALL += "redis"
 IMAGE_INSTALL += "lighttpd"
 IMAGE_INSTALL += "sudo"
 IMAGE_INSTALL += "sensorhub"
-
-
+ 
+EXTRA_IMAGEDEPENDS_append_quark = " grub-conf "
 
 # IMAGE_INSTALL += " connman"
 # IMAGE_INSTALL += "util-linux-mkfs"
