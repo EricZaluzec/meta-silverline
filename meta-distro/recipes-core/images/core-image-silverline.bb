@@ -76,3 +76,12 @@ EXTRA_IMAGEDEPENDS_append_quark = " grub-conf "
 # IMAGE_INSTALL_append += "python python-modules python-numpy python-opencv"
 # IMAGE_INSTALL_append += "alsa-lib alsa-utils alsa-tools"
 
+
+ROOTFS_POSTPROCESS_COMMAND_append_quark += " install_silverline_repo; "
+
+install_silverline_repo() {
+   echo "src/gz all http://silverline-support.dyndns.org/deploy/release/daisy/quark/ipk/all" > ${IMAGE_ROOTFS}/etc/opkg/base-feeds.conf
+   echo "src/gz i586  http://silverline-support.dyndns.org/deploy/release/daisy/quark/ipk/corei7-64" >> ${IMAGE_ROOTFS}/etc/opkg/base-feeds.conf
+   echo "src/gz quark http://silverline-support.dyndns.org/deploy/release/daisy/quark/ipk/valleyisland_64" >> ${IMAGE_ROOTFS}/etc/opkg/base-feeds.conf
+}
+
