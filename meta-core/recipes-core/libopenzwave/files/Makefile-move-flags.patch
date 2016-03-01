@@ -1,0 +1,36 @@
+--- openzwave-1.0.791/Makefile	2016-03-01 14:43:40.683556530 +0800
++++ openzwave-1.0.791/Makefile	2016-03-01 14:45:36.607561465 +0800
+@@ -17,19 +17,19 @@
+ export PREFIX
+ 
+ all: 
+-	$(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS) 
+-	$(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ -$(MAKEFLAGS) 
++	$(MAKE) $(MAKEFLAGS) -C $(top_srcdir)/cpp/build/ 
++	$(MAKE) $(MAKEFLAGS)-C $(top_srcdir)/cpp/examples/MinOZW/
+ 
+ install:
+-	$(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS) $(MAKECMDGOALS)
+-	$(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ -$(MAKEFLAGS) $(MAKECMDGOALS)
++	$(MAKE) $(MAKEFLAGS) $(MAKECMDGOALS) -C $(top_srcdir)/cpp/build/ 
++	$(MAKE) $(MAKEFLAGS) $(MAKECMDGOALS) -C $(top_srcdir)/cpp/examples/MinOZW/ 
+ 
+ clean:
+-	$(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS) $(MAKECMDGOALS)
+-	$(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ -$(MAKEFLAGS) $(MAKECMDGOALS)
++	$(MAKE) $(MAKEFLAGS) $(MAKECMDGOALS) -C $(top_srcdir)/cpp/build/ 
++	$(MAKE) $(MAKEFLAGS) $(MAKECMDGOALS) -C $(top_srcdir)/cpp/examples/MinOZW/ 
+ 
+ cpp/src/vers.cpp:
+-	$(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS) cpp/src/vers.cpp
++	$(MAKE) $(MAKEFLAGS) -C $(top_srcdir)/cpp/build/ cpp/src/vers.cpp
+ 
+ check:
+ 
+@@ -43,4 +43,4 @@
+ DIST_FORMATS ?= gzip
+ 
+ include $(top_srcdir)/distfiles.mk
+-include $(top_srcdir)/dist.mk
+\ No newline at end of file
++include $(top_srcdir)/dist.mk
