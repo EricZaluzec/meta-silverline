@@ -19,8 +19,8 @@ SRC_URI = "https://github.com/lwfinger/rtlwifi_new/archive/troy.zip \
 	file://Makefile.patch  \
 "
 
-SRC_URI[md5sum] = "eacce3225fed5e5120e367ffaeab50df"
-SRC_URI[sha256sum] = "2ed0bc9519a0c521da2cfb86c13fc77572b06bfc2d3fd70f6e3f2f2af781db05"
+SRC_URI[md5sum] = "8ecbd40cd658416b279dfd3c77027dd3"
+SRC_URI[sha256sum] = "0216800e685b78a40da701643e00a9ca9b91bda3b687c72daff3a9f8746049c7"
 
 inherit pkgconfig module
 
