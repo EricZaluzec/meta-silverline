@@ -6,24 +6,24 @@
  all: 
 -	$(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS) 
 -	$(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ -$(MAKEFLAGS) 
-+	$(MAKE) $(MAKEFLAGS) -C $(top_srcdir)/cpp/build/ 
-+	$(MAKE) $(MAKEFLAGS)-C $(top_srcdir)/cpp/examples/MinOZW/
++	$(MAKE) -C $(top_srcdir)/cpp/build/ $(MAKEFLAGS) 
++	$(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ ${MAKEFLAGS}
  
  install:
 -	$(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS) $(MAKECMDGOALS)
 -	$(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ -$(MAKEFLAGS) $(MAKECMDGOALS)
-+	$(MAKE) $(MAKEFLAGS) $(MAKECMDGOALS) -C $(top_srcdir)/cpp/build/ 
-+	$(MAKE) $(MAKEFLAGS) $(MAKECMDGOALS) -C $(top_srcdir)/cpp/examples/MinOZW/ 
++	$(MAKE) -C $(top_srcdir)/cpp/build/ ${MAKEFLAGS} ${MAKEGLOBALS}
++	$(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ ${MAKEFLAGS} ${MAKEGLOBALS}
  
  clean:
 -	$(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS) $(MAKECMDGOALS)
 -	$(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ -$(MAKEFLAGS) $(MAKECMDGOALS)
-+	$(MAKE) $(MAKEFLAGS) $(MAKECMDGOALS) -C $(top_srcdir)/cpp/build/ 
-+	$(MAKE) $(MAKEFLAGS) $(MAKECMDGOALS) -C $(top_srcdir)/cpp/examples/MinOZW/ 
++	$(MAKE) -C $(top_srcdir)/cpp/build/ ${MAKEFLAGS} ${MAKEGLOBALS}
++	$(MAKE) -C $(top_srcdir)/cpp/examples/MinOZW/ ${MAKEFLAGS} ${MAKEGLOBALS}
  
  cpp/src/vers.cpp:
 -	$(MAKE) -C $(top_srcdir)/cpp/build/ -$(MAKEFLAGS) cpp/src/vers.cpp
-+	$(MAKE) $(MAKEFLAGS) -C $(top_srcdir)/cpp/build/ cpp/src/vers.cpp
++	$(MAKE) -C $(top_srcdir)/cpp/build/ cpp/src/vers.cpp$ {MAKEFLAGS}
  
  check:
  

@@ -9,10 +9,10 @@ PR = "r0"
 SRC_URI = "http://old.openzwave.com/downloads/openzwave-${PV}.tar.gz \
 	file://hid.c.patch \
 	file://Makefile.patch  \
-	file://Makefile-move-flags.patch \
 "
 
 
+#	file://Makefile-move-flags.patch 
 
 SRC_URI[md5sum] = "552e94b56741ea1a51bbd2adff7ba3e8"
 SRC_URI[sha256sum] = "7400a097f0bc1574f61ca8fac3aac5e1c2bf9715efe193ef37890e924c0fb50e"
