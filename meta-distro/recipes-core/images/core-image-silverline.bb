@@ -10,6 +10,8 @@ LICENSE = "GPLv2"
 inherit core-image
 
 
+IMAGE_FSTYPES = "ext4 iso hddimg"
+
 DISTRO_FEATURES += "bluetooth usbgadget usbhost wifi zeroconf pci 3g"
 
 IMAGE_FEATURES += "package-management"
@@ -39,6 +41,16 @@ IMAGE_INSTALL += "redis"
 IMAGE_INSTALL += "lighttpd"
 IMAGE_INSTALL += "sudo"
 IMAGE_INSTALL += "sensorhub"
+
+
+ROOTFS_POSTPROCESS_COMMAND_append_valleyisland-64 += " install_silverline_repo; "
+
+install_silverline_repo() {
+   PACKAGE_PATH="http://silverline-support.dyndns.org/deploy/test/fido/valleyisland-64/ipk"
+   echo "src/gz all ${PACKAGE_PATH}/all" > ${IMAGE_ROOTFS}/etc/opkg/base-feeds.conf
+   echo "src/gz i586  ${PACKAGE_PATH}/corei7-64" >> ${IMAGE_ROOTFS}/etc/opkg/base-feeds.conf
+   echo "src/gz quark ${PACKAGE_PATH}/valleyisland_64" >> ${IMAGE_ROOTFS}/etc/opkg/base-feeds.conf
+}
 
 
 
