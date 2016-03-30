@@ -42,6 +42,17 @@ IMAGE_INSTALL += "sensorhub"
  
 EXTRA_IMAGEDEPENDS_append_quark = " grub-conf "
 
+ROOTFS_POSTPROCESS_COMMAND_append_quark += " install_silverline_repo; "
+
+install_silverline_repo() {
+   URL_PACKAGE_ROOT="http://silverline-support.dyndns.org/deploy/test/daisy/quark/ipk"
+   echo "src/gz all "$URL_PACKAGE_ROOT/all" > ${IMAGE_ROOTFS}/etc/opkg/base-feeds.conf
+   echo "src/gz i586  "$URL_PACKAGE_ROOT/ipk/corei7-64" >> ${IMAGE_ROOTFS}/etc/opkg/base-feeds.conf
+   echo "src/gz quark "$URL_PACKAGE_ROOT/ipk/valleyisland_64" >> ${IMAGE_ROOTFS}/etc/opkg/base-feeds.conf
+}
+
+
+
 # IMAGE_INSTALL += " connman"
 # IMAGE_INSTALL += "util-linux-mkfs"
 # IMAGE_INSTALL += "e2fsprogs"
