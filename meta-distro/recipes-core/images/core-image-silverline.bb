@@ -10,7 +10,7 @@ LICENSE = "GPLv2"
 inherit core-image
 
 
-IMAGE_FSTYPES = "ext4 iso hddimg"
+IMAGE_FSTYPES = "ext4 iso hddimg live"
 
 DISTRO_FEATURES += "bluetooth usbgadget usbhost wifi zeroconf pci 3g"
 
